@@ -1,0 +1,1010 @@
+:root {
+  --primary: #3ba184;
+  --primary-foreground: #ffffff;
+  --muted-foreground: #7c8a85;
+  --sky: #62c3a3;
+  --sky-deep: #2f8f76;
+  --cloud: #ffffff;
+  --ink: #262626;
+}
+
+
+/* =========================================================
+   RESET
+========================================================= */
+
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+html,
+body,
+#root {
+  width: 100%;
+  min-height: 100%;
+}
+
+body {
+  font-family:
+    Inter,
+    Arial,
+    Helvetica,
+    sans-serif;
+}
+
+
+/* =========================================================
+   MAIN PAGE
+========================================================= */
+
+.panda-page {
+  position: relative;
+
+  min-height: 100vh;
+  width: 100%;
+
+  overflow: hidden;
+
+  background:
+    radial-gradient(
+      ellipse at center,
+      var(--sky) 0%,
+      var(--sky-deep) 100%
+    );
+
+  color: var(--ink);
+}
+
+
+/* =========================================================
+   STARS
+========================================================= */
+
+.star {
+  position: absolute;
+
+  width: 4px;
+  height: 4px;
+
+  border-radius: 50%;
+
+  background: var(--cloud);
+
+  box-shadow:
+    0 0 8px
+    rgba(255, 255, 255, 0.8);
+
+  pointer-events: none;
+
+  animation:
+    twinkle 3s ease-in-out infinite;
+}
+
+
+/* =========================================================
+   CLOUD
+========================================================= */
+
+.cloud-wrapper {
+  position: absolute;
+
+  left: 0;
+  right: 0;
+
+  top: 6%;
+  bottom: 6%;
+
+  z-index: 2;
+
+  pointer-events: none;
+
+  transform-origin: center;
+
+  animation:
+    cloud-open
+    2.2s
+    cubic-bezier(.7, 0, .2, 1)
+    forwards;
+}
+
+.cloud-middle {
+  position: absolute;
+
+  left: 0;
+  right: 0;
+
+  top: 56px;
+  bottom: 56px;
+
+  background: var(--cloud);
+}
+
+.cloud-top {
+  position: absolute;
+
+  left: 0;
+  right: 0;
+
+  top: 0;
+
+  width: 100%;
+  height: 56px;
+
+  fill: var(--cloud);
+}
+
+.cloud-bottom {
+  position: absolute;
+
+  left: 0;
+  right: 0;
+
+  bottom: 0;
+
+  width: 100%;
+  height: 56px;
+
+  fill: var(--cloud);
+
+  transform: rotate(180deg);
+}
+
+
+/* =========================================================
+   MAIN CONTENT
+========================================================= */
+
+.login-container {
+  position: relative;
+
+  z-index: 10;
+
+  width: 100%;
+  max-width: 1024px;
+
+  min-height: 100vh;
+
+  margin: 0 auto;
+
+  padding: 96px 24px;
+
+  display: flex;
+
+  align-items: center;
+
+  justify-content: center;
+
+  gap: 96px;
+
+  opacity: 0;
+
+  animation:
+    content-in
+    2.8s
+    ease-out
+    forwards;
+}
+
+
+/* =========================================================
+   LOGIN CARD
+========================================================= */
+
+.login-card {
+  width: 100%;
+  max-width: 320px;
+
+  padding: 30px 26px;
+
+  display: flex;
+
+  flex-direction: column;
+
+  align-items: center;
+
+  border-radius: 24px;
+
+  background:
+    rgba(255, 255, 255, 0.18);
+
+  border:
+    1px solid
+    rgba(255, 255, 255, 0.45);
+
+  backdrop-filter:
+    blur(18px);
+
+  -webkit-backdrop-filter:
+    blur(18px);
+
+  box-shadow:
+    0 25px 60px
+    rgba(35, 100, 80, 0.18),
+
+    inset 0 1px 0
+    rgba(255, 255, 255, 0.7);
+
+  transition:
+    transform 0.3s ease,
+    box-shadow 0.3s ease;
+}
+
+.login-card:hover {
+  transform:
+    translateY(-4px);
+
+  box-shadow:
+    0 30px 70px
+    rgba(35, 100, 80, 0.24),
+
+    inset 0 1px 0
+    rgba(255, 255, 255, 0.8);
+}
+
+
+/* =========================================================
+   HELLO
+========================================================= */
+
+.login-card h1 {
+  margin: 0;
+
+  color: var(--ink);
+
+  font-size: 30px;
+
+  line-height: 1.2;
+
+  font-weight: 800;
+
+  text-align: center;
+}
+
+
+/* =========================================================
+   SUBTITLE
+========================================================= */
+
+.subtitle {
+  margin-top: 6px;
+
+  color:
+    var(--muted-foreground);
+
+  font-size: 12px;
+
+  text-align: center;
+}
+
+
+/* =========================================================
+   PANDA
+========================================================= */
+
+.panda-container {
+  margin: 12px 0;
+
+  width: 100px;
+  height: 100px;
+
+  display: flex;
+
+  align-items: center;
+
+  justify-content: center;
+}
+
+.panda {
+  width: 96px;
+  height: 96px;
+
+  overflow: visible;
+
+  fill: var(--ink);
+
+  filter:
+    drop-shadow(
+      0 10px 10px
+      rgba(0, 0, 0, 0.12)
+    );
+}
+
+.panda-white {
+  fill: var(--cloud);
+}
+
+.panda-hands {
+  transform-origin: center;
+
+  transition:
+    transform 0.3s ease;
+}
+
+
+/* =========================================================
+   INPUT
+========================================================= */
+
+.input-group {
+  width: 100%;
+
+  display: flex;
+
+  align-items: center;
+
+  gap: 12px;
+
+  padding: 13px 2px;
+
+  border-bottom:
+    1px solid
+    rgba(59, 161, 132, 0.35);
+
+  transition:
+    border-color 0.3s ease;
+}
+
+.input-group:focus-within {
+  border-bottom-color:
+    var(--primary);
+}
+
+.input-icon {
+  width: 17px;
+  height: 17px;
+
+  flex-shrink: 0;
+
+  color:
+    var(--muted-foreground);
+
+  transition:
+    color 0.2s ease;
+}
+
+.input-group:focus-within
+.input-icon {
+  color:
+    var(--primary);
+}
+
+.input-group input {
+  width: 100%;
+
+  border: none;
+
+  outline: none;
+
+  background:
+    transparent;
+
+  color:
+    var(--ink);
+
+  font-family: inherit;
+
+  font-size: 14px;
+}
+
+.input-group input::placeholder {
+  color:
+    #94a39e;
+}
+
+
+/* =========================================================
+   EYE
+========================================================= */
+
+.eye-button {
+  width: 30px;
+  height: 30px;
+
+  flex-shrink: 0;
+
+  display: flex;
+
+  align-items: center;
+
+  justify-content: center;
+
+  border: none;
+
+  border-radius: 50%;
+
+  background:
+    transparent;
+
+  color:
+    var(--primary);
+
+  cursor: pointer;
+
+  transition:
+    transform 0.2s ease,
+    background 0.2s ease;
+}
+
+.eye-button svg {
+  width: 17px;
+  height: 17px;
+}
+
+.eye-button:hover {
+  transform:
+    scale(1.08);
+
+  background:
+    rgba(59, 161, 132, 0.12);
+}
+
+
+/* =========================================================
+   OPTIONS
+========================================================= */
+
+.options {
+  width: 100%;
+
+  margin-top: 16px;
+
+  display: flex;
+
+  align-items: center;
+
+  justify-content: space-between;
+
+  gap: 10px;
+
+  font-size: 12px;
+}
+
+.remember {
+  display: flex;
+
+  align-items: center;
+
+  gap: 7px;
+
+  color:
+    var(--muted-foreground);
+
+  cursor: pointer;
+}
+
+.remember input {
+  width: 14px;
+  height: 14px;
+
+  cursor: pointer;
+
+  accent-color:
+    var(--primary);
+}
+
+.options a,
+.create-account a {
+  color:
+    var(--primary);
+
+  text-decoration: none;
+
+  font-weight: 700;
+
+  transition:
+    color 0.2s ease,
+    opacity 0.2s ease;
+}
+
+.options a:hover,
+.create-account a:hover {
+  color:
+    var(--sky-deep);
+
+  opacity: 0.85;
+}
+
+
+/* =========================================================
+   SIGN IN
+========================================================= */
+
+.sign-in-button {
+  width: 192px;
+
+  margin-top: 24px;
+
+  padding:
+    13px 20px;
+
+  border: none;
+
+  border-radius: 999px;
+
+  background:
+    linear-gradient(
+      135deg,
+      var(--sky),
+      var(--sky-deep)
+    );
+
+  color:
+    var(--primary-foreground);
+
+  font-size: 14px;
+
+  font-weight: 700;
+
+  letter-spacing: 2px;
+
+  cursor: pointer;
+
+  box-shadow:
+    0 10px 24px -8px
+    var(--sky-deep);
+
+  transition:
+    transform 0.25s ease,
+    box-shadow 0.25s ease;
+}
+
+.sign-in-button:hover {
+  transform:
+    translateY(-2px)
+    scale(1.05);
+
+  box-shadow:
+    0 15px 30px -8px
+    var(--sky-deep);
+}
+
+.sign-in-button:active {
+  transform:
+    scale(0.98);
+}
+
+
+/* =========================================================
+   CREATE ACCOUNT
+========================================================= */
+
+.create-account {
+  margin-top: 16px;
+
+  color:
+    var(--muted-foreground);
+
+  font-size: 12px;
+
+  text-align: center;
+}
+
+
+/* =========================================================
+   WELCOME SECTION
+========================================================= */
+
+.welcome-section {
+  width: 100%;
+
+  max-width: 380px;
+
+  padding: 20px;
+
+  text-align: left;
+
+  display: flex;
+
+  align-items: center;
+}
+
+.welcome-content {
+  width: 100%;
+
+  opacity: 0;
+
+  transform:
+    translateX(25px);
+
+  animation:
+    welcome-content-in
+    1s
+    ease-out
+    2.5s
+    forwards;
+}
+
+
+/* =========================================================
+   WELCOME TITLE
+========================================================= */
+
+.welcome-title {
+  margin: 0;
+
+  color:
+    var(--ink);
+
+  font-size: 36px;
+
+  line-height: 1.15;
+
+  font-weight: 800;
+
+  min-height: 42px;
+
+  white-space: nowrap;
+}
+
+
+/* =========================================================
+   TITLE CURSOR
+========================================================= */
+
+.typing-cursor {
+  display: inline-block;
+
+  margin-left: 3px;
+
+  color:
+    var(--primary);
+
+  font-weight: 400;
+
+  animation:
+    cursor-blink
+    0.75s
+    step-end
+    infinite;
+}
+
+
+/* =========================================================
+   GREEN LINE
+========================================================= */
+
+.welcome-line {
+  width: 0;
+
+  height: 4px;
+
+  margin-top: 12px;
+
+  border-radius: 20px;
+
+  background:
+    linear-gradient(
+      90deg,
+      var(--primary),
+      var(--sky)
+    );
+
+  transition:
+    width 0.7s ease;
+}
+
+.welcome-line.show-line {
+  width: 58px;
+}
+
+
+/* =========================================================
+   DESCRIPTION
+========================================================= */
+
+.welcome-description {
+  max-width: 380px;
+
+  min-height: 76px;
+
+  margin-top: 22px;
+
+  color:
+    var(--muted-foreground);
+
+  font-size: 14px;
+
+  line-height: 1.8;
+
+  opacity: 0;
+
+  animation:
+    description-show
+    0.5s
+    ease-out
+    4s
+    forwards;
+}
+
+
+/* =========================================================
+   DESCRIPTION CURSOR
+========================================================= */
+
+.description-cursor {
+  display: inline-block;
+
+  margin-left: 2px;
+
+  color:
+    var(--primary);
+
+  font-weight: 500;
+
+  animation:
+    cursor-blink
+    0.7s
+    step-end
+    infinite;
+}
+
+
+/* =========================================================
+   CLOUD ANIMATION
+========================================================= */
+
+@keyframes cloud-open {
+
+  0% {
+    transform:
+      scaleY(0.12);
+  }
+
+  45% {
+    transform:
+      scaleY(0.12);
+  }
+
+  100% {
+    transform:
+      scaleY(1);
+  }
+}
+
+
+/* =========================================================
+   CONTENT ANIMATION
+========================================================= */
+
+@keyframes content-in {
+
+  0%,
+  70% {
+    opacity: 0;
+
+    transform:
+      translateY(16px);
+  }
+
+  100% {
+    opacity: 1;
+
+    transform:
+      translateY(0);
+  }
+}
+
+
+/* =========================================================
+   WELCOME SLIDE
+========================================================= */
+
+@keyframes welcome-content-in {
+
+  0% {
+    opacity: 0;
+
+    transform:
+      translateX(25px);
+  }
+
+  100% {
+    opacity: 1;
+
+    transform:
+      translateX(0);
+  }
+}
+
+
+/* =========================================================
+   DESCRIPTION APPEAR
+========================================================= */
+
+@keyframes description-show {
+
+  0% {
+    opacity: 0;
+  }
+
+  100% {
+    opacity: 1;
+  }
+}
+
+
+/* =========================================================
+   CURSOR BLINK
+========================================================= */
+
+@keyframes cursor-blink {
+
+  0%,
+  45% {
+    opacity: 1;
+  }
+
+  46%,
+  100% {
+    opacity: 0;
+  }
+}
+
+
+/* =========================================================
+   STAR ANIMATION
+========================================================= */
+
+@keyframes twinkle {
+
+  0%,
+  100% {
+    opacity: 0.2;
+
+    transform:
+      scale(0.7);
+  }
+
+  50% {
+    opacity: 1;
+
+    transform:
+      scale(1.4);
+  }
+}
+
+
+/* =========================================================
+   TABLET
+========================================================= */
+
+@media (max-width: 800px) {
+
+  .login-container {
+    gap: 45px;
+
+    padding:
+      70px 20px;
+  }
+
+  .welcome-section {
+    max-width: 320px;
+  }
+
+  .welcome-title {
+    font-size: 30px;
+  }
+}
+
+
+/* =========================================================
+   MOBILE
+========================================================= */
+
+@media (max-width: 700px) {
+
+  .login-container {
+    min-height: auto;
+
+    flex-direction: column;
+
+    gap: 25px;
+
+    padding:
+      55px 18px;
+  }
+
+  .login-card {
+    max-width: 360px;
+
+    padding:
+      28px 24px;
+  }
+
+  .welcome-section {
+    max-width: 360px;
+
+    padding:
+      10px 20px 30px;
+
+    text-align: center;
+
+    justify-content: center;
+  }
+
+  .welcome-content {
+    transform:
+      translateY(15px);
+  }
+
+  .welcome-title {
+    font-size: 30px;
+  }
+
+  .welcome-line {
+    margin-left: auto;
+    margin-right: auto;
+  }
+
+  .welcome-description {
+    margin-top: 22px;
+  }
+}
+
+
+/* =========================================================
+   SMALL MOBILE
+========================================================= */
+
+@media (max-width: 420px) {
+
+  .login-container {
+    padding:
+      40px 14px;
+  }
+
+  .login-card {
+    max-width: 100%;
+
+    padding:
+      25px 20px;
+
+    border-radius: 20px;
+  }
+
+  .login-card h1 {
+    font-size: 27px;
+  }
+
+  .welcome-title {
+    font-size: 27px;
+  }
+
+  .panda {
+    width: 88px;
+    height: 88px;
+  }
+
+  .sign-in-button {
+    width: 180px;
+  }
+
+  .welcome-description {
+    font-size: 13px;
+
+    line-height: 1.7;
+  }
+}
+
+
+/* =========================================================
+   REDUCED MOTION
+========================================================= */
+
+@media (prefers-reduced-motion: reduce) {
+
+  *,
+  *::before,
+  *::after {
+    animation-duration:
+      0.01ms !important;
+
+    animation-iteration-count:
+      1 !important;
+
+    transition-duration:
+      0.01ms !important;
+  }
+}
